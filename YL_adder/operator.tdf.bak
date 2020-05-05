@@ -1,0 +1,5 @@
+SUBDESIGN operator
+(
+	a, b, c, d : input;
+	oa, ob, oc, 
+)

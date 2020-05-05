@@ -1,0 +1,35 @@
+SUBDESIGN pulsar
+(
+	clk, reset, key : input;
+	o : output;
+)
+VARIABLE
+	ss: MACHINE OF BITS (o) WITH STATES (
+		s0 = 0,
+		s1 = 0,
+		s2 = 1,
+		s3 = 0
+	);
+BEGIN
+	ss.clk = clk;
+	ss.reset = reset;
+	
+	TABLE
+	% current      current         next   %
+		ss,			key		=>			ss;
+		s0,			0			=>			s0;
+		s0,			1			=>			s1;
+		s1,			0			=>			s0;
+		s1,			1			=>			s2;
+		s2,			0			=>			s0;
+		s2,			1			=>			s3;
+		s3,			0			=>			s0;
+		s3,			1			=>			s3;
+	END TABLE;
+	
+END;
+		
+		
+		
+		
+		

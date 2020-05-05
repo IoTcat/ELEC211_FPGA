@@ -1,0 +1,758 @@
+// Copyright (C) 1991-2013 Altera Corporation
+// Your use of Altera Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Altera Program License 
+// Subscription Agreement, Altera MegaCore Function License 
+// Agreement, or other applicable license agreement, including, 
+// without limitation, that your use is for the sole purpose of 
+// programming logic devices manufactured by Altera and sold by 
+// Altera or its authorized distributors.  Please refer to the 
+// applicable agreement for further details.
+
+// *****************************************************************************
+// This file contains a Verilog test bench with test vectors .The test vectors  
+// are exported from a vector file in the Quartus Waveform Editor and apply to  
+// the top level entity of the current Quartus project .The user can use this   
+// testbench to simulate his design using a third-party simulation tool .       
+// *****************************************************************************
+// Generated on "05/04/2020 16:45:13"
+                                                                        
+// Verilog Self-Checking Test Bench (with test vectors) for design :    YL_adder
+// 
+// Simulation tool : 3rd Party
+// 
+
+`timescale 1 ps/ 1 ps
+module YL_adder_vlg_sample_tst(
+	clk,
+	INPUT_A1,
+	INPUT_A2,
+	INPUT_A3,
+	INPUT_A4,
+	INPUT_B1,
+	INPUT_B2,
+	INPUT_B3,
+	INPUT_B4,
+	isAdd,
+	reset,
+	sampler_tx
+);
+input  clk;
+input  INPUT_A1;
+input  INPUT_A2;
+input  INPUT_A3;
+input  INPUT_A4;
+input  INPUT_B1;
+input  INPUT_B2;
+input  INPUT_B3;
+input  INPUT_B4;
+input  isAdd;
+input  reset;
+output sampler_tx;
+
+reg sample;
+time current_time;
+always @(clk or INPUT_A1 or INPUT_A2 or INPUT_A3 or INPUT_A4 or INPUT_B1 or INPUT_B2 or INPUT_B3 or INPUT_B4 or isAdd or reset)
+                                                                                
+begin                                                 
+ if ($realtime > 0)                                   
+ begin                                                
+	if ($realtime == 0 || $realtime != current_time)  
+	begin									          
+		if (sample === 1'bx)                          
+			sample = 0;                               
+		else                                          
+			sample = ~sample;                         
+	end										          
+	current_time = $realtime;					      
+ end                                                  
+end                                                   
+
+assign sampler_tx = sample;
+endmodule
+
+module YL_adder_vlg_check_tst (
+	num,
+	OUTPUT_A,
+	OUTPUT_A2,
+	OUTPUT_B,
+	OUTPUT_B2,
+	OUTPUT_C,
+	OUTPUT_C2,
+	OUTPUT_D,
+	OUTPUT_D2,
+	OUTPUT_E,
+	OUTPUT_E2,
+	OUTPUT_F,
+	OUTPUT_F2,
+	OUTPUT_G,
+	OUTPUT_G2,
+	overflow,
+	sampler_rx
+);
+input  num;
+input  OUTPUT_A;
+input  OUTPUT_A2;
+input  OUTPUT_B;
+input  OUTPUT_B2;
+input  OUTPUT_C;
+input  OUTPUT_C2;
+input  OUTPUT_D;
+input  OUTPUT_D2;
+input  OUTPUT_E;
+input  OUTPUT_E2;
+input  OUTPUT_F;
+input  OUTPUT_F2;
+input  OUTPUT_G;
+input  OUTPUT_G2;
+input  overflow;
+input sampler_rx;
+
+reg  num_expected;
+reg  OUTPUT_A_expected;
+reg  OUTPUT_A2_expected;
+reg  OUTPUT_B_expected;
+reg  OUTPUT_B2_expected;
+reg  OUTPUT_C_expected;
+reg  OUTPUT_C2_expected;
+reg  OUTPUT_D_expected;
+reg  OUTPUT_D2_expected;
+reg  OUTPUT_E_expected;
+reg  OUTPUT_E2_expected;
+reg  OUTPUT_F_expected;
+reg  OUTPUT_F2_expected;
+reg  OUTPUT_G_expected;
+reg  OUTPUT_G2_expected;
+reg  overflow_expected;
+
+reg  num_prev;
+reg  OUTPUT_A_prev;
+reg  OUTPUT_A2_prev;
+reg  OUTPUT_B_prev;
+reg  OUTPUT_B2_prev;
+reg  OUTPUT_C_prev;
+reg  OUTPUT_C2_prev;
+reg  OUTPUT_D_prev;
+reg  OUTPUT_D2_prev;
+reg  OUTPUT_E_prev;
+reg  OUTPUT_E2_prev;
+reg  OUTPUT_F_prev;
+reg  OUTPUT_F2_prev;
+reg  OUTPUT_G_prev;
+reg  OUTPUT_G2_prev;
+reg  overflow_prev;
+
+reg  num_expected_prev;
+reg  OUTPUT_A_expected_prev;
+reg  OUTPUT_A2_expected_prev;
+reg  OUTPUT_B_expected_prev;
+reg  OUTPUT_B2_expected_prev;
+reg  OUTPUT_C_expected_prev;
+reg  OUTPUT_C2_expected_prev;
+reg  OUTPUT_D_expected_prev;
+reg  OUTPUT_D2_expected_prev;
+reg  OUTPUT_E_expected_prev;
+reg  OUTPUT_E2_expected_prev;
+reg  OUTPUT_F_expected_prev;
+reg  OUTPUT_F2_expected_prev;
+reg  OUTPUT_G_expected_prev;
+reg  OUTPUT_G2_expected_prev;
+reg  overflow_expected_prev;
+
+reg  last_num_exp;
+reg  last_OUTPUT_A_exp;
+reg  last_OUTPUT_A2_exp;
+reg  last_OUTPUT_B_exp;
+reg  last_OUTPUT_B2_exp;
+reg  last_OUTPUT_C_exp;
+reg  last_OUTPUT_C2_exp;
+reg  last_OUTPUT_D_exp;
+reg  last_OUTPUT_D2_exp;
+reg  last_OUTPUT_E_exp;
+reg  last_OUTPUT_E2_exp;
+reg  last_OUTPUT_F_exp;
+reg  last_OUTPUT_F2_exp;
+reg  last_OUTPUT_G_exp;
+reg  last_OUTPUT_G2_exp;
+reg  last_overflow_exp;
+
+reg trigger;
+
+integer i;
+integer nummismatches;
+
+reg [1:16] on_first_change ;
+
+
+initial
+begin
+trigger = 0;
+i = 0;
+nummismatches = 0;
+on_first_change = 16'b1;
+end
+
+// update real /o prevs
+
+always @(trigger)
+begin
+	num_prev = num;
+	OUTPUT_A_prev = OUTPUT_A;
+	OUTPUT_A2_prev = OUTPUT_A2;
+	OUTPUT_B_prev = OUTPUT_B;
+	OUTPUT_B2_prev = OUTPUT_B2;
+	OUTPUT_C_prev = OUTPUT_C;
+	OUTPUT_C2_prev = OUTPUT_C2;
+	OUTPUT_D_prev = OUTPUT_D;
+	OUTPUT_D2_prev = OUTPUT_D2;
+	OUTPUT_E_prev = OUTPUT_E;
+	OUTPUT_E2_prev = OUTPUT_E2;
+	OUTPUT_F_prev = OUTPUT_F;
+	OUTPUT_F2_prev = OUTPUT_F2;
+	OUTPUT_G_prev = OUTPUT_G;
+	OUTPUT_G2_prev = OUTPUT_G2;
+	overflow_prev = overflow;
+end
+
+// update expected /o prevs
+
+always @(trigger)
+begin
+	num_expected_prev = num_expected;
+	OUTPUT_A_expected_prev = OUTPUT_A_expected;
+	OUTPUT_A2_expected_prev = OUTPUT_A2_expected;
+	OUTPUT_B_expected_prev = OUTPUT_B_expected;
+	OUTPUT_B2_expected_prev = OUTPUT_B2_expected;
+	OUTPUT_C_expected_prev = OUTPUT_C_expected;
+	OUTPUT_C2_expected_prev = OUTPUT_C2_expected;
+	OUTPUT_D_expected_prev = OUTPUT_D_expected;
+	OUTPUT_D2_expected_prev = OUTPUT_D2_expected;
+	OUTPUT_E_expected_prev = OUTPUT_E_expected;
+	OUTPUT_E2_expected_prev = OUTPUT_E2_expected;
+	OUTPUT_F_expected_prev = OUTPUT_F_expected;
+	OUTPUT_F2_expected_prev = OUTPUT_F2_expected;
+	OUTPUT_G_expected_prev = OUTPUT_G_expected;
+	OUTPUT_G2_expected_prev = OUTPUT_G2_expected;
+	overflow_expected_prev = overflow_expected;
+end
+
+
+
+// expected num
+initial
+begin
+	num_expected = 1'bX;
+end 
+
+// expected OUTPUT_A
+initial
+begin
+	OUTPUT_A_expected = 1'bX;
+end 
+
+// expected OUTPUT_A2
+initial
+begin
+	OUTPUT_A2_expected = 1'bX;
+end 
+
+// expected OUTPUT_B
+initial
+begin
+	OUTPUT_B_expected = 1'bX;
+end 
+
+// expected OUTPUT_B2
+initial
+begin
+	OUTPUT_B2_expected = 1'bX;
+end 
+
+// expected OUTPUT_C
+initial
+begin
+	OUTPUT_C_expected = 1'bX;
+end 
+
+// expected OUTPUT_C2
+initial
+begin
+	OUTPUT_C2_expected = 1'bX;
+end 
+
+// expected OUTPUT_D
+initial
+begin
+	OUTPUT_D_expected = 1'bX;
+end 
+
+// expected OUTPUT_D2
+initial
+begin
+	OUTPUT_D2_expected = 1'bX;
+end 
+
+// expected OUTPUT_E
+initial
+begin
+	OUTPUT_E_expected = 1'bX;
+end 
+
+// expected OUTPUT_E2
+initial
+begin
+	OUTPUT_E2_expected = 1'bX;
+end 
+
+// expected OUTPUT_F
+initial
+begin
+	OUTPUT_F_expected = 1'bX;
+end 
+
+// expected OUTPUT_F2
+initial
+begin
+	OUTPUT_F2_expected = 1'bX;
+end 
+
+// expected OUTPUT_G
+initial
+begin
+	OUTPUT_G_expected = 1'bX;
+end 
+
+// expected OUTPUT_G2
+initial
+begin
+	OUTPUT_G2_expected = 1'bX;
+end 
+
+// expected overflow
+initial
+begin
+	overflow_expected = 1'bX;
+end 
+// generate trigger
+always @(num_expected or num or OUTPUT_A_expected or OUTPUT_A or OUTPUT_A2_expected or OUTPUT_A2 or OUTPUT_B_expected or OUTPUT_B or OUTPUT_B2_expected or OUTPUT_B2 or OUTPUT_C_expected or OUTPUT_C or OUTPUT_C2_expected or OUTPUT_C2 or OUTPUT_D_expected or OUTPUT_D or OUTPUT_D2_expected or OUTPUT_D2 or OUTPUT_E_expected or OUTPUT_E or OUTPUT_E2_expected or OUTPUT_E2 or OUTPUT_F_expected or OUTPUT_F or OUTPUT_F2_expected or OUTPUT_F2 or OUTPUT_G_expected or OUTPUT_G or OUTPUT_G2_expected or OUTPUT_G2 or overflow_expected or overflow)
+begin
+	trigger <= ~trigger;
+end
+
+always @(posedge sampler_rx or negedge sampler_rx)
+begin
+`ifdef debug_tbench
+	$display("Scanning pattern %d @time = %t",i,$realtime );
+	i = i + 1;
+	$display("| expected num = %b | expected OUTPUT_A = %b | expected OUTPUT_A2 = %b | expected OUTPUT_B = %b | expected OUTPUT_B2 = %b | expected OUTPUT_C = %b | expected OUTPUT_C2 = %b | expected OUTPUT_D = %b | expected OUTPUT_D2 = %b | expected OUTPUT_E = %b | expected OUTPUT_E2 = %b | expected OUTPUT_F = %b | expected OUTPUT_F2 = %b | expected OUTPUT_G = %b | expected OUTPUT_G2 = %b | expected overflow = %b | ",num_expected_prev,OUTPUT_A_expected_prev,OUTPUT_A2_expected_prev,OUTPUT_B_expected_prev,OUTPUT_B2_expected_prev,OUTPUT_C_expected_prev,OUTPUT_C2_expected_prev,OUTPUT_D_expected_prev,OUTPUT_D2_expected_prev,OUTPUT_E_expected_prev,OUTPUT_E2_expected_prev,OUTPUT_F_expected_prev,OUTPUT_F2_expected_prev,OUTPUT_G_expected_prev,OUTPUT_G2_expected_prev,overflow_expected_prev);
+	$display("| real num = %b | real OUTPUT_A = %b | real OUTPUT_A2 = %b | real OUTPUT_B = %b | real OUTPUT_B2 = %b | real OUTPUT_C = %b | real OUTPUT_C2 = %b | real OUTPUT_D = %b | real OUTPUT_D2 = %b | real OUTPUT_E = %b | real OUTPUT_E2 = %b | real OUTPUT_F = %b | real OUTPUT_F2 = %b | real OUTPUT_G = %b | real OUTPUT_G2 = %b | real overflow = %b | ",num_prev,OUTPUT_A_prev,OUTPUT_A2_prev,OUTPUT_B_prev,OUTPUT_B2_prev,OUTPUT_C_prev,OUTPUT_C2_prev,OUTPUT_D_prev,OUTPUT_D2_prev,OUTPUT_E_prev,OUTPUT_E2_prev,OUTPUT_F_prev,OUTPUT_F2_prev,OUTPUT_G_prev,OUTPUT_G2_prev,overflow_prev);
+`endif
+	if (
+		( num_expected_prev !== 1'bx ) && ( num_prev !== num_expected_prev )
+		&& ((num_expected_prev !== last_num_exp) ||
+			on_first_change[1])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port num :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", num_expected_prev);
+		$display ("     Real value = %b", num_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[1] = 1'b0;
+		last_num_exp = num_expected_prev;
+	end
+	if (
+		( OUTPUT_A_expected_prev !== 1'bx ) && ( OUTPUT_A_prev !== OUTPUT_A_expected_prev )
+		&& ((OUTPUT_A_expected_prev !== last_OUTPUT_A_exp) ||
+			on_first_change[2])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port OUTPUT_A :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", OUTPUT_A_expected_prev);
+		$display ("     Real value = %b", OUTPUT_A_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[2] = 1'b0;
+		last_OUTPUT_A_exp = OUTPUT_A_expected_prev;
+	end
+	if (
+		( OUTPUT_A2_expected_prev !== 1'bx ) && ( OUTPUT_A2_prev !== OUTPUT_A2_expected_prev )
+		&& ((OUTPUT_A2_expected_prev !== last_OUTPUT_A2_exp) ||
+			on_first_change[3])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port OUTPUT_A2 :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", OUTPUT_A2_expected_prev);
+		$display ("     Real value = %b", OUTPUT_A2_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[3] = 1'b0;
+		last_OUTPUT_A2_exp = OUTPUT_A2_expected_prev;
+	end
+	if (
+		( OUTPUT_B_expected_prev !== 1'bx ) && ( OUTPUT_B_prev !== OUTPUT_B_expected_prev )
+		&& ((OUTPUT_B_expected_prev !== last_OUTPUT_B_exp) ||
+			on_first_change[4])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port OUTPUT_B :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", OUTPUT_B_expected_prev);
+		$display ("     Real value = %b", OUTPUT_B_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[4] = 1'b0;
+		last_OUTPUT_B_exp = OUTPUT_B_expected_prev;
+	end
+	if (
+		( OUTPUT_B2_expected_prev !== 1'bx ) && ( OUTPUT_B2_prev !== OUTPUT_B2_expected_prev )
+		&& ((OUTPUT_B2_expected_prev !== last_OUTPUT_B2_exp) ||
+			on_first_change[5])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port OUTPUT_B2 :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", OUTPUT_B2_expected_prev);
+		$display ("     Real value = %b", OUTPUT_B2_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[5] = 1'b0;
+		last_OUTPUT_B2_exp = OUTPUT_B2_expected_prev;
+	end
+	if (
+		( OUTPUT_C_expected_prev !== 1'bx ) && ( OUTPUT_C_prev !== OUTPUT_C_expected_prev )
+		&& ((OUTPUT_C_expected_prev !== last_OUTPUT_C_exp) ||
+			on_first_change[6])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port OUTPUT_C :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", OUTPUT_C_expected_prev);
+		$display ("     Real value = %b", OUTPUT_C_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[6] = 1'b0;
+		last_OUTPUT_C_exp = OUTPUT_C_expected_prev;
+	end
+	if (
+		( OUTPUT_C2_expected_prev !== 1'bx ) && ( OUTPUT_C2_prev !== OUTPUT_C2_expected_prev )
+		&& ((OUTPUT_C2_expected_prev !== last_OUTPUT_C2_exp) ||
+			on_first_change[7])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port OUTPUT_C2 :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", OUTPUT_C2_expected_prev);
+		$display ("     Real value = %b", OUTPUT_C2_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[7] = 1'b0;
+		last_OUTPUT_C2_exp = OUTPUT_C2_expected_prev;
+	end
+	if (
+		( OUTPUT_D_expected_prev !== 1'bx ) && ( OUTPUT_D_prev !== OUTPUT_D_expected_prev )
+		&& ((OUTPUT_D_expected_prev !== last_OUTPUT_D_exp) ||
+			on_first_change[8])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port OUTPUT_D :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", OUTPUT_D_expected_prev);
+		$display ("     Real value = %b", OUTPUT_D_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[8] = 1'b0;
+		last_OUTPUT_D_exp = OUTPUT_D_expected_prev;
+	end
+	if (
+		( OUTPUT_D2_expected_prev !== 1'bx ) && ( OUTPUT_D2_prev !== OUTPUT_D2_expected_prev )
+		&& ((OUTPUT_D2_expected_prev !== last_OUTPUT_D2_exp) ||
+			on_first_change[9])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port OUTPUT_D2 :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", OUTPUT_D2_expected_prev);
+		$display ("     Real value = %b", OUTPUT_D2_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[9] = 1'b0;
+		last_OUTPUT_D2_exp = OUTPUT_D2_expected_prev;
+	end
+	if (
+		( OUTPUT_E_expected_prev !== 1'bx ) && ( OUTPUT_E_prev !== OUTPUT_E_expected_prev )
+		&& ((OUTPUT_E_expected_prev !== last_OUTPUT_E_exp) ||
+			on_first_change[10])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port OUTPUT_E :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", OUTPUT_E_expected_prev);
+		$display ("     Real value = %b", OUTPUT_E_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[10] = 1'b0;
+		last_OUTPUT_E_exp = OUTPUT_E_expected_prev;
+	end
+	if (
+		( OUTPUT_E2_expected_prev !== 1'bx ) && ( OUTPUT_E2_prev !== OUTPUT_E2_expected_prev )
+		&& ((OUTPUT_E2_expected_prev !== last_OUTPUT_E2_exp) ||
+			on_first_change[11])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port OUTPUT_E2 :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", OUTPUT_E2_expected_prev);
+		$display ("     Real value = %b", OUTPUT_E2_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[11] = 1'b0;
+		last_OUTPUT_E2_exp = OUTPUT_E2_expected_prev;
+	end
+	if (
+		( OUTPUT_F_expected_prev !== 1'bx ) && ( OUTPUT_F_prev !== OUTPUT_F_expected_prev )
+		&& ((OUTPUT_F_expected_prev !== last_OUTPUT_F_exp) ||
+			on_first_change[12])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port OUTPUT_F :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", OUTPUT_F_expected_prev);
+		$display ("     Real value = %b", OUTPUT_F_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[12] = 1'b0;
+		last_OUTPUT_F_exp = OUTPUT_F_expected_prev;
+	end
+	if (
+		( OUTPUT_F2_expected_prev !== 1'bx ) && ( OUTPUT_F2_prev !== OUTPUT_F2_expected_prev )
+		&& ((OUTPUT_F2_expected_prev !== last_OUTPUT_F2_exp) ||
+			on_first_change[13])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port OUTPUT_F2 :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", OUTPUT_F2_expected_prev);
+		$display ("     Real value = %b", OUTPUT_F2_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[13] = 1'b0;
+		last_OUTPUT_F2_exp = OUTPUT_F2_expected_prev;
+	end
+	if (
+		( OUTPUT_G_expected_prev !== 1'bx ) && ( OUTPUT_G_prev !== OUTPUT_G_expected_prev )
+		&& ((OUTPUT_G_expected_prev !== last_OUTPUT_G_exp) ||
+			on_first_change[14])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port OUTPUT_G :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", OUTPUT_G_expected_prev);
+		$display ("     Real value = %b", OUTPUT_G_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[14] = 1'b0;
+		last_OUTPUT_G_exp = OUTPUT_G_expected_prev;
+	end
+	if (
+		( OUTPUT_G2_expected_prev !== 1'bx ) && ( OUTPUT_G2_prev !== OUTPUT_G2_expected_prev )
+		&& ((OUTPUT_G2_expected_prev !== last_OUTPUT_G2_exp) ||
+			on_first_change[15])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port OUTPUT_G2 :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", OUTPUT_G2_expected_prev);
+		$display ("     Real value = %b", OUTPUT_G2_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[15] = 1'b0;
+		last_OUTPUT_G2_exp = OUTPUT_G2_expected_prev;
+	end
+	if (
+		( overflow_expected_prev !== 1'bx ) && ( overflow_prev !== overflow_expected_prev )
+		&& ((overflow_expected_prev !== last_overflow_exp) ||
+			on_first_change[16])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port overflow :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", overflow_expected_prev);
+		$display ("     Real value = %b", overflow_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[16] = 1'b0;
+		last_overflow_exp = overflow_expected_prev;
+	end
+
+	trigger <= ~trigger;
+end
+initial 
+
+begin 
+$timeformat(-12,3," ps",6);
+#1000000;
+if (nummismatches > 0)
+	$display ("%d mismatched vectors : Simulation failed !",nummismatches);
+else
+	$display ("Simulation passed !");
+$finish;
+end 
+endmodule
+
+module YL_adder_vlg_vec_tst();
+// constants                                           
+// general purpose registers
+reg clk;
+reg INPUT_A1;
+reg INPUT_A2;
+reg INPUT_A3;
+reg INPUT_A4;
+reg INPUT_B1;
+reg INPUT_B2;
+reg INPUT_B3;
+reg INPUT_B4;
+reg isAdd;
+reg reset;
+// wires                                               
+wire num;
+wire OUTPUT_A;
+wire OUTPUT_A2;
+wire OUTPUT_B;
+wire OUTPUT_B2;
+wire OUTPUT_C;
+wire OUTPUT_C2;
+wire OUTPUT_D;
+wire OUTPUT_D2;
+wire OUTPUT_E;
+wire OUTPUT_E2;
+wire OUTPUT_F;
+wire OUTPUT_F2;
+wire OUTPUT_G;
+wire OUTPUT_G2;
+wire overflow;
+
+wire sampler;                             
+
+// assign statements (if any)                          
+YL_adder i1 (
+// port map - connection between master ports and signals/registers   
+	.clk(clk),
+	.INPUT_A1(INPUT_A1),
+	.INPUT_A2(INPUT_A2),
+	.INPUT_A3(INPUT_A3),
+	.INPUT_A4(INPUT_A4),
+	.INPUT_B1(INPUT_B1),
+	.INPUT_B2(INPUT_B2),
+	.INPUT_B3(INPUT_B3),
+	.INPUT_B4(INPUT_B4),
+	.isAdd(isAdd),
+	.num(num),
+	.OUTPUT_A(OUTPUT_A),
+	.OUTPUT_A2(OUTPUT_A2),
+	.OUTPUT_B(OUTPUT_B),
+	.OUTPUT_B2(OUTPUT_B2),
+	.OUTPUT_C(OUTPUT_C),
+	.OUTPUT_C2(OUTPUT_C2),
+	.OUTPUT_D(OUTPUT_D),
+	.OUTPUT_D2(OUTPUT_D2),
+	.OUTPUT_E(OUTPUT_E),
+	.OUTPUT_E2(OUTPUT_E2),
+	.OUTPUT_F(OUTPUT_F),
+	.OUTPUT_F2(OUTPUT_F2),
+	.OUTPUT_G(OUTPUT_G),
+	.OUTPUT_G2(OUTPUT_G2),
+	.overflow(overflow),
+	.reset(reset)
+);
+
+// clk
+always
+begin
+	clk = 1'b0;
+	clk = #10000 1'b1;
+	#10000;
+end 
+
+// reset
+initial
+begin
+	reset = 1'b0;
+end 
+
+// isAdd
+initial
+begin
+	isAdd = 1'b0;
+end 
+
+// INPUT_A1
+initial
+begin
+	INPUT_A1 = 1'b0;
+	INPUT_A1 = #400000 1'b1;
+	INPUT_A1 = #400000 1'b0;
+end 
+
+// INPUT_A2
+initial
+begin
+	repeat(2)
+	begin
+		INPUT_A2 = 1'b0;
+		INPUT_A2 = #200000 1'b1;
+		# 200000;
+	end
+	INPUT_A2 = 1'b0;
+end 
+
+// INPUT_A3
+always
+begin
+	INPUT_A3 = 1'b0;
+	INPUT_A3 = #100000 1'b1;
+	#100000;
+end 
+
+// INPUT_A4
+always
+begin
+	INPUT_A4 = 1'b0;
+	INPUT_A4 = #50000 1'b1;
+	#50000;
+end 
+
+// INPUT_B1
+initial
+begin
+	INPUT_B1 = 1'b0;
+end 
+
+// INPUT_B2
+initial
+begin
+	INPUT_B2 = 1'b0;
+end 
+
+// INPUT_B3
+initial
+begin
+	INPUT_B3 = 1'b0;
+end 
+
+// INPUT_B4
+initial
+begin
+	INPUT_B4 = 1'b0;
+end 
+
+YL_adder_vlg_sample_tst tb_sample (
+	.clk(clk),
+	.INPUT_A1(INPUT_A1),
+	.INPUT_A2(INPUT_A2),
+	.INPUT_A3(INPUT_A3),
+	.INPUT_A4(INPUT_A4),
+	.INPUT_B1(INPUT_B1),
+	.INPUT_B2(INPUT_B2),
+	.INPUT_B3(INPUT_B3),
+	.INPUT_B4(INPUT_B4),
+	.isAdd(isAdd),
+	.reset(reset),
+	.sampler_tx(sampler)
+);
+
+YL_adder_vlg_check_tst tb_out(
+	.num(num),
+	.OUTPUT_A(OUTPUT_A),
+	.OUTPUT_A2(OUTPUT_A2),
+	.OUTPUT_B(OUTPUT_B),
+	.OUTPUT_B2(OUTPUT_B2),
+	.OUTPUT_C(OUTPUT_C),
+	.OUTPUT_C2(OUTPUT_C2),
+	.OUTPUT_D(OUTPUT_D),
+	.OUTPUT_D2(OUTPUT_D2),
+	.OUTPUT_E(OUTPUT_E),
+	.OUTPUT_E2(OUTPUT_E2),
+	.OUTPUT_F(OUTPUT_F),
+	.OUTPUT_F2(OUTPUT_F2),
+	.OUTPUT_G(OUTPUT_G),
+	.OUTPUT_G2(OUTPUT_G2),
+	.overflow(overflow),
+	.sampler_rx(sampler)
+);
+endmodule
+

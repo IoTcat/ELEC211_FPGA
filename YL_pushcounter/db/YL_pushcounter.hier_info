@@ -1,0 +1,126 @@
+|YL_pushcounter
+rco <= dec_count:inst1.rco
+clk => pulsar:inst.clk
+clk => dec_count:inst1.clk
+reset => pulsar:inst.reset
+reset => dec_count:inst1.clear
+key => inst99.IN0
+OUTPUT_A <= inst3.DB_MAX_OUTPUT_PORT_TYPE
+value[0] <= dec_count:inst1.value[0]
+value[1] <= dec_count:inst1.value[1]
+value[2] <= dec_count:inst1.value[2]
+value[3] <= dec_count:inst1.value[3]
+OUTPUT_B <= inst4.DB_MAX_OUTPUT_PORT_TYPE
+OUTPUT_C <= inst5.DB_MAX_OUTPUT_PORT_TYPE
+OUTPUT_D <= inst6.DB_MAX_OUTPUT_PORT_TYPE
+OUTPUT_E <= inst7.DB_MAX_OUTPUT_PORT_TYPE
+OUTPUT_F <= inst8.DB_MAX_OUTPUT_PORT_TYPE
+OUTPUT_G <= inst9.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|YL_pushcounter|dec_count:inst1
+enc => _.IN0
+enc => _.IN0
+ent => _.IN1
+ent => _.IN1
+ent => rco.IN1
+clk => count[3].CLK
+clk => count[2].CLK
+clk => count[1].CLK
+clk => count[0].CLK
+clear => _.IN0
+value[0] <= count[0].DB_MAX_OUTPUT_PORT_TYPE
+value[1] <= count[1].DB_MAX_OUTPUT_PORT_TYPE
+value[2] <= count[2].DB_MAX_OUTPUT_PORT_TYPE
+value[3] <= count[3].DB_MAX_OUTPUT_PORT_TYPE
+rco <= rco.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|YL_pushcounter|pulsar:inst
+clk => ss.IN1
+reset => ss.IN1
+key => _.IN0
+key => _.IN1
+key => _.IN0
+key => _.IN1
+key => _.IN0
+key => _.IN1
+key => _.IN0
+key => _.IN1
+o <= ss$o.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|YL_pushcounter|7segment:inst_
+i[0] => _.IN0
+i[0] => b~0.IN3
+i[0] => _.IN0
+i[0] => a~2.IN3
+i[0] => _.IN0
+i[0] => a~3.IN3
+i[0] => _.IN0
+i[0] => a~5.IN3
+i[0] => _.IN0
+i[0] => a~7.IN3
+i[0] => _.IN0
+i[0] => c~0.IN3
+i[0] => _.IN0
+i[0] => b~2.IN3
+i[0] => _.IN0
+i[0] => a~11.IN3
+i[1] => _.IN0
+i[1] => _.IN0
+i[1] => a~1.IN2
+i[1] => a~2.IN2
+i[1] => _.IN0
+i[1] => _.IN0
+i[1] => a~4.IN2
+i[1] => a~5.IN2
+i[1] => _.IN0
+i[1] => _.IN0
+i[1] => a~8.IN2
+i[1] => c~0.IN2
+i[1] => _.IN0
+i[1] => _.IN0
+i[1] => a~10.IN2
+i[1] => a~11.IN2
+i[2] => _.IN0
+i[2] => _.IN0
+i[2] => _.IN0
+i[2] => _.IN0
+i[2] => b~1.IN1
+i[2] => a~3.IN1
+i[2] => a~4.IN1
+i[2] => a~5.IN1
+i[2] => _.IN0
+i[2] => _.IN0
+i[2] => _.IN0
+i[2] => _.IN0
+i[2] => a~9.IN1
+i[2] => b~2.IN1
+i[2] => a~10.IN1
+i[2] => a~11.IN1
+i[3] => _.IN0
+i[3] => _.IN0
+i[3] => _.IN0
+i[3] => _.IN0
+i[3] => _.IN0
+i[3] => _.IN0
+i[3] => _.IN0
+i[3] => _.IN0
+i[3] => a~6.IN0
+i[3] => a~7.IN0
+i[3] => a~8.IN0
+i[3] => c~0.IN0
+i[3] => a~9.IN0
+i[3] => b~2.IN0
+i[3] => a~10.IN0
+i[3] => a~11.IN0
+a <= a.DB_MAX_OUTPUT_PORT_TYPE
+b <= b.DB_MAX_OUTPUT_PORT_TYPE
+c <= c.DB_MAX_OUTPUT_PORT_TYPE
+d <= d.DB_MAX_OUTPUT_PORT_TYPE
+e <= e.DB_MAX_OUTPUT_PORT_TYPE
+f <= f.DB_MAX_OUTPUT_PORT_TYPE
+g <= g.DB_MAX_OUTPUT_PORT_TYPE
+
+

@@ -1,0 +1,25 @@
+SUBDESIGN dec_count
+(
+	enc, ent, clk : INPUT; % two enables and the clock %
+	clear : INPUT; % Synchronous clear %
+	value[3..0] : OUTPUT; % Four output bits %
+	rco : OUTPUT; % ripple carry out %
+)
+VARIABLE
+	count[3..0] : DFF; % locally define 4 D-Flip-Flops for the count %
+BEGIN
+	count[].clk = clk; % Connect the clock input to the DFF’s clock %
+	value[] = count[]; % connect the outputs of the DFFs to the outputs %
+	IF (clear) THEN % if clear is true clear the count i.e. %
+		count[].d = 0; % load the flipflops with zero %
+	ELSIF (enc & ent & (count[].q != 9)) THEN
+		% if both enables are true and the count does not %
+		count[].d = count[].q + 1; % equal nine then add one to the count value %
+	ELSIF (enc & ent & (count[].q == 9)) THEN
+		% if both enables are true and the count does %
+		count[].d = 0; % equal nine then load the flip flops with zero %
+	ELSE % with no enable keep the flips flops at the same value %
+		count[].d = count[].q;
+	END IF;
+	rco = ((count[].q == 9) & ent);% generate the rco when the count is nine and ent is true %
+END;

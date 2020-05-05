@@ -1,0 +1,30 @@
+|YL_dec_counter
+rco <= dec_count:inst.rco
+enc => dec_count:inst.enc
+ent => dec_count:inst.ent
+clock => dec_count:inst.clk
+clear => dec_count:inst.clear
+value[0] <= dec_count:inst.value[0]
+value[1] <= dec_count:inst.value[1]
+value[2] <= dec_count:inst.value[2]
+value[3] <= dec_count:inst.value[3]
+
+
+|YL_dec_counter|dec_count:inst
+enc => _~2.IN0
+enc => _~14.IN0
+ent => _~2.IN1
+ent => _~14.IN1
+ent => rco~0.IN1
+clk => count[3].CLK
+clk => count[2].CLK
+clk => count[1].CLK
+clk => count[0].CLK
+clear => _~1.IN0
+value[0] <= count[0].DB_MAX_OUTPUT_PORT_TYPE
+value[1] <= count[1].DB_MAX_OUTPUT_PORT_TYPE
+value[2] <= count[2].DB_MAX_OUTPUT_PORT_TYPE
+value[3] <= count[3].DB_MAX_OUTPUT_PORT_TYPE
+rco <= rco~0.DB_MAX_OUTPUT_PORT_TYPE
+
+

@@ -1,0 +1,7 @@
+
+State Machine - |YL_pushcounter|pulsar:inst|ss
+Name s3 s1 s0 s2 
+s0 0 0 0 0 
+s1 0 1 1 0 
+s2 0 0 1 1 
+s3 1 0 1 0 

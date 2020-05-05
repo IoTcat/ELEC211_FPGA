@@ -1,0 +1,12 @@
+SUBDESIGN overflow
+(
+	iA, iB, o : input;
+	v : output;
+)
+BEGIN
+	if (iA == VCC & iB == VCC & o == GND)#(iA == GND & iB == GND & o == VCC) THEN
+		v = VCC;
+	ELSE
+		v = GND;
+	END IF;
+END;

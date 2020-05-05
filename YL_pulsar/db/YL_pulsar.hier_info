@@ -1,0 +1,21 @@
+|YL_pulsar
+output <= pulsar:inst.o
+clk => pulsar:inst.clk
+reset => pulsar:inst.reset
+key => inst99.IN0
+
+
+|YL_pulsar|pulsar:inst
+clk => ss~0.IN1
+reset => ss~2.IN1
+key => _~6.IN0
+key => _~8.IN1
+key => _~9.IN0
+key => _~11.IN1
+key => _~12.IN0
+key => _~14.IN1
+key => _~15.IN0
+key => _~17.IN1
+o <= ss$o.DB_MAX_OUTPUT_PORT_TYPE
+
+

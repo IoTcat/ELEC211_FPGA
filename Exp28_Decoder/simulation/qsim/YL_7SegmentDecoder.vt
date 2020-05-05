@@ -1,0 +1,394 @@
+// Copyright (C) 1991-2013 Altera Corporation
+// Your use of Altera Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Altera Program License 
+// Subscription Agreement, Altera MegaCore Function License 
+// Agreement, or other applicable license agreement, including, 
+// without limitation, that your use is for the sole purpose of 
+// programming logic devices manufactured by Altera and sold by 
+// Altera or its authorized distributors.  Please refer to the 
+// applicable agreement for further details.
+
+// *****************************************************************************
+// This file contains a Verilog test bench with test vectors .The test vectors  
+// are exported from a vector file in the Quartus Waveform Editor and apply to  
+// the top level entity of the current Quartus project .The user can use this   
+// testbench to simulate his design using a third-party simulation tool .       
+// *****************************************************************************
+// Generated on "05/03/2020 17:53:54"
+                                                                        
+// Verilog Self-Checking Test Bench (with test vectors) for design :    YL_7SegmentDecoder
+// 
+// Simulation tool : 3rd Party
+// 
+
+`timescale 1 ps/ 1 ps
+module YL_7SegmentDecoder_vlg_sample_tst(
+	in,
+	sampler_tx
+);
+input [3:0] in;
+output sampler_tx;
+
+reg sample;
+time current_time;
+always @(in)
+                                                                                
+begin                                                 
+ if ($realtime > 0)                                   
+ begin                                                
+	if ($realtime == 0 || $realtime != current_time)  
+	begin									          
+		if (sample === 1'bx)                          
+			sample = 0;                               
+		else                                          
+			sample = ~sample;                         
+	end										          
+	current_time = $realtime;					      
+ end                                                  
+end                                                   
+
+assign sampler_tx = sample;
+endmodule
+
+module YL_7SegmentDecoder_vlg_check_tst (
+	OUTPUT_A,
+	OUTPUT_B,
+	OUTPUT_C,
+	OUTPUT_D,
+	OUTPUT_E,
+	OUTPUT_F,
+	OUTPUT_G,
+	sampler_rx
+);
+input  OUTPUT_A;
+input  OUTPUT_B;
+input  OUTPUT_C;
+input  OUTPUT_D;
+input  OUTPUT_E;
+input  OUTPUT_F;
+input  OUTPUT_G;
+input sampler_rx;
+
+reg  OUTPUT_A_expected;
+reg  OUTPUT_B_expected;
+reg  OUTPUT_C_expected;
+reg  OUTPUT_D_expected;
+reg  OUTPUT_E_expected;
+reg  OUTPUT_F_expected;
+reg  OUTPUT_G_expected;
+
+reg  OUTPUT_A_prev;
+reg  OUTPUT_B_prev;
+reg  OUTPUT_C_prev;
+reg  OUTPUT_D_prev;
+reg  OUTPUT_E_prev;
+reg  OUTPUT_F_prev;
+reg  OUTPUT_G_prev;
+
+reg  OUTPUT_A_expected_prev;
+reg  OUTPUT_B_expected_prev;
+reg  OUTPUT_C_expected_prev;
+reg  OUTPUT_D_expected_prev;
+reg  OUTPUT_E_expected_prev;
+reg  OUTPUT_F_expected_prev;
+reg  OUTPUT_G_expected_prev;
+
+reg  last_OUTPUT_A_exp;
+reg  last_OUTPUT_B_exp;
+reg  last_OUTPUT_C_exp;
+reg  last_OUTPUT_D_exp;
+reg  last_OUTPUT_E_exp;
+reg  last_OUTPUT_F_exp;
+reg  last_OUTPUT_G_exp;
+
+reg trigger;
+
+integer i;
+integer nummismatches;
+
+reg [1:7] on_first_change ;
+
+
+initial
+begin
+trigger = 0;
+i = 0;
+nummismatches = 0;
+on_first_change = 7'b1;
+end
+
+// update real /o prevs
+
+always @(trigger)
+begin
+	OUTPUT_A_prev = OUTPUT_A;
+	OUTPUT_B_prev = OUTPUT_B;
+	OUTPUT_C_prev = OUTPUT_C;
+	OUTPUT_D_prev = OUTPUT_D;
+	OUTPUT_E_prev = OUTPUT_E;
+	OUTPUT_F_prev = OUTPUT_F;
+	OUTPUT_G_prev = OUTPUT_G;
+end
+
+// update expected /o prevs
+
+always @(trigger)
+begin
+	OUTPUT_A_expected_prev = OUTPUT_A_expected;
+	OUTPUT_B_expected_prev = OUTPUT_B_expected;
+	OUTPUT_C_expected_prev = OUTPUT_C_expected;
+	OUTPUT_D_expected_prev = OUTPUT_D_expected;
+	OUTPUT_E_expected_prev = OUTPUT_E_expected;
+	OUTPUT_F_expected_prev = OUTPUT_F_expected;
+	OUTPUT_G_expected_prev = OUTPUT_G_expected;
+end
+
+
+
+// expected OUTPUT_A
+initial
+begin
+	OUTPUT_A_expected = 1'bX;
+end 
+
+// expected OUTPUT_B
+initial
+begin
+	OUTPUT_B_expected = 1'bX;
+end 
+
+// expected OUTPUT_C
+initial
+begin
+	OUTPUT_C_expected = 1'bX;
+end 
+
+// expected OUTPUT_D
+initial
+begin
+	OUTPUT_D_expected = 1'bX;
+end 
+
+// expected OUTPUT_E
+initial
+begin
+	OUTPUT_E_expected = 1'bX;
+end 
+
+// expected OUTPUT_F
+initial
+begin
+	OUTPUT_F_expected = 1'bX;
+end 
+
+// expected OUTPUT_G
+initial
+begin
+	OUTPUT_G_expected = 1'bX;
+end 
+// generate trigger
+always @(OUTPUT_A_expected or OUTPUT_A or OUTPUT_B_expected or OUTPUT_B or OUTPUT_C_expected or OUTPUT_C or OUTPUT_D_expected or OUTPUT_D or OUTPUT_E_expected or OUTPUT_E or OUTPUT_F_expected or OUTPUT_F or OUTPUT_G_expected or OUTPUT_G)
+begin
+	trigger <= ~trigger;
+end
+
+always @(posedge sampler_rx or negedge sampler_rx)
+begin
+`ifdef debug_tbench
+	$display("Scanning pattern %d @time = %t",i,$realtime );
+	i = i + 1;
+	$display("| expected OUTPUT_A = %b | expected OUTPUT_B = %b | expected OUTPUT_C = %b | expected OUTPUT_D = %b | expected OUTPUT_E = %b | expected OUTPUT_F = %b | expected OUTPUT_G = %b | ",OUTPUT_A_expected_prev,OUTPUT_B_expected_prev,OUTPUT_C_expected_prev,OUTPUT_D_expected_prev,OUTPUT_E_expected_prev,OUTPUT_F_expected_prev,OUTPUT_G_expected_prev);
+	$display("| real OUTPUT_A = %b | real OUTPUT_B = %b | real OUTPUT_C = %b | real OUTPUT_D = %b | real OUTPUT_E = %b | real OUTPUT_F = %b | real OUTPUT_G = %b | ",OUTPUT_A_prev,OUTPUT_B_prev,OUTPUT_C_prev,OUTPUT_D_prev,OUTPUT_E_prev,OUTPUT_F_prev,OUTPUT_G_prev);
+`endif
+	if (
+		( OUTPUT_A_expected_prev !== 1'bx ) && ( OUTPUT_A_prev !== OUTPUT_A_expected_prev )
+		&& ((OUTPUT_A_expected_prev !== last_OUTPUT_A_exp) ||
+			on_first_change[1])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port OUTPUT_A :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", OUTPUT_A_expected_prev);
+		$display ("     Real value = %b", OUTPUT_A_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[1] = 1'b0;
+		last_OUTPUT_A_exp = OUTPUT_A_expected_prev;
+	end
+	if (
+		( OUTPUT_B_expected_prev !== 1'bx ) && ( OUTPUT_B_prev !== OUTPUT_B_expected_prev )
+		&& ((OUTPUT_B_expected_prev !== last_OUTPUT_B_exp) ||
+			on_first_change[2])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port OUTPUT_B :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", OUTPUT_B_expected_prev);
+		$display ("     Real value = %b", OUTPUT_B_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[2] = 1'b0;
+		last_OUTPUT_B_exp = OUTPUT_B_expected_prev;
+	end
+	if (
+		( OUTPUT_C_expected_prev !== 1'bx ) && ( OUTPUT_C_prev !== OUTPUT_C_expected_prev )
+		&& ((OUTPUT_C_expected_prev !== last_OUTPUT_C_exp) ||
+			on_first_change[3])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port OUTPUT_C :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", OUTPUT_C_expected_prev);
+		$display ("     Real value = %b", OUTPUT_C_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[3] = 1'b0;
+		last_OUTPUT_C_exp = OUTPUT_C_expected_prev;
+	end
+	if (
+		( OUTPUT_D_expected_prev !== 1'bx ) && ( OUTPUT_D_prev !== OUTPUT_D_expected_prev )
+		&& ((OUTPUT_D_expected_prev !== last_OUTPUT_D_exp) ||
+			on_first_change[4])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port OUTPUT_D :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", OUTPUT_D_expected_prev);
+		$display ("     Real value = %b", OUTPUT_D_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[4] = 1'b0;
+		last_OUTPUT_D_exp = OUTPUT_D_expected_prev;
+	end
+	if (
+		( OUTPUT_E_expected_prev !== 1'bx ) && ( OUTPUT_E_prev !== OUTPUT_E_expected_prev )
+		&& ((OUTPUT_E_expected_prev !== last_OUTPUT_E_exp) ||
+			on_first_change[5])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port OUTPUT_E :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", OUTPUT_E_expected_prev);
+		$display ("     Real value = %b", OUTPUT_E_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[5] = 1'b0;
+		last_OUTPUT_E_exp = OUTPUT_E_expected_prev;
+	end
+	if (
+		( OUTPUT_F_expected_prev !== 1'bx ) && ( OUTPUT_F_prev !== OUTPUT_F_expected_prev )
+		&& ((OUTPUT_F_expected_prev !== last_OUTPUT_F_exp) ||
+			on_first_change[6])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port OUTPUT_F :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", OUTPUT_F_expected_prev);
+		$display ("     Real value = %b", OUTPUT_F_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[6] = 1'b0;
+		last_OUTPUT_F_exp = OUTPUT_F_expected_prev;
+	end
+	if (
+		( OUTPUT_G_expected_prev !== 1'bx ) && ( OUTPUT_G_prev !== OUTPUT_G_expected_prev )
+		&& ((OUTPUT_G_expected_prev !== last_OUTPUT_G_exp) ||
+			on_first_change[7])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port OUTPUT_G :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", OUTPUT_G_expected_prev);
+		$display ("     Real value = %b", OUTPUT_G_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[7] = 1'b0;
+		last_OUTPUT_G_exp = OUTPUT_G_expected_prev;
+	end
+
+	trigger <= ~trigger;
+end
+initial 
+
+begin 
+$timeformat(-12,3," ps",6);
+#1000000;
+if (nummismatches > 0)
+	$display ("%d mismatched vectors : Simulation failed !",nummismatches);
+else
+	$display ("Simulation passed !");
+$finish;
+end 
+endmodule
+
+module YL_7SegmentDecoder_vlg_vec_tst();
+// constants                                           
+// general purpose registers
+reg [3:0] in;
+// wires                                               
+wire OUTPUT_A;
+wire OUTPUT_B;
+wire OUTPUT_C;
+wire OUTPUT_D;
+wire OUTPUT_E;
+wire OUTPUT_F;
+wire OUTPUT_G;
+
+wire sampler;                             
+
+// assign statements (if any)                          
+YL_7SegmentDecoder i1 (
+// port map - connection between master ports and signals/registers   
+	.in(in),
+	.OUTPUT_A(OUTPUT_A),
+	.OUTPUT_B(OUTPUT_B),
+	.OUTPUT_C(OUTPUT_C),
+	.OUTPUT_D(OUTPUT_D),
+	.OUTPUT_E(OUTPUT_E),
+	.OUTPUT_F(OUTPUT_F),
+	.OUTPUT_G(OUTPUT_G)
+);
+
+// in[0]
+always
+begin
+	in[0] = 1'b0;
+	in[0] = #50000 1'b1;
+	#50000;
+end 
+
+// in[1]
+always
+begin
+	in[1] = 1'b0;
+	in[1] = #100000 1'b1;
+	#100000;
+end 
+
+// in[2]
+initial
+begin
+	repeat(2)
+	begin
+		in[2] = 1'b0;
+		in[2] = #200000 1'b1;
+		# 200000;
+	end
+	in[2] = 1'b0;
+end 
+
+// in[3]
+initial
+begin
+	in[3] = 1'b0;
+	in[3] = #400000 1'b1;
+	in[3] = #400000 1'b0;
+end 
+
+YL_7SegmentDecoder_vlg_sample_tst tb_sample (
+	.in(in),
+	.sampler_tx(sampler)
+);
+
+YL_7SegmentDecoder_vlg_check_tst tb_out(
+	.OUTPUT_A(OUTPUT_A),
+	.OUTPUT_B(OUTPUT_B),
+	.OUTPUT_C(OUTPUT_C),
+	.OUTPUT_D(OUTPUT_D),
+	.OUTPUT_E(OUTPUT_E),
+	.OUTPUT_F(OUTPUT_F),
+	.OUTPUT_G(OUTPUT_G),
+	.sampler_rx(sampler)
+);
+endmodule
+

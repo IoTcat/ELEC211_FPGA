@@ -1,0 +1,25 @@
+% 0 1 2 3 4 5 6 7 8 9 A b C d E F %
+% %
+SUBDESIGN 7segment
+(
+	sign : INPUT;
+	a, b, c, d, e, f, g : OUTPUT;
+)
+BEGIN
+
+	DEFAULTS
+		a = VCC;
+		b = VCC;
+		c = VCC;
+		d = VCC;
+		e = VCC;
+		f = VCC;
+		g = VCC;
+	END DEFAULTS;
+	
+	IF sign THEN
+		g = GND;
+	ELSE
+		g = VCC;
+	END iF;
+END;

@@ -1,0 +1,17 @@
+SUBDESIGN sec_cnt
+(
+	clk : INPUT;
+	second : OUTPUT;
+)
+VARIABLE
+	count[25..0] : DFF;
+BEGIN
+	count[].clk = clk;
+	IF ((count[].q == 5)) THEN
+		count[].d = 0;
+		second = VCC;
+	ELSE
+		count[].d = count[].q + 1;
+		second = GND;
+	END IF;
+END;

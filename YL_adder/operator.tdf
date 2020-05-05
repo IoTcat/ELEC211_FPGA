@@ -1,0 +1,21 @@
+SUBDESIGN operator
+(
+	b1, b2, b3, b4 : input;
+	isAdd : input;
+	o1, o2, o3, o4 : output;
+)
+BEGIN
+
+	if isAdd THEN
+		o1 = b1;
+		o2 = b2;
+		o3 = b3;
+		o4 = b4;
+	ELSE
+		o1 = !b1;
+		o2 = !b2;
+		o3 = !b3;
+		o4 = !b4;
+	END IF;
+
+END;
